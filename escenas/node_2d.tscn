@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://cimene5qurawh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_85jn7"]
+
+[node name="Player2D" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_85jn7")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
