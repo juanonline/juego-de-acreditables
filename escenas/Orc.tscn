@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://bw0lpljvspjm5"]
+
+[ext_resource type="Texture2D" uid="uid://doq77pwyn8hyv" path="res://Orc.png" id="1_ljr46"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3mhud"]
+
+[sub_resource type="Animation" id="Animation_o6tbw"]
+resource_name = "Idle"
+step = 0.1
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_frvxv"]
+_data = {
+"Idle": SubResource("Animation_o6tbw")
+}
+
+[node name="Enemigo2D" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("CapsuleShape2D_3mhud")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(349, 249)
+texture = ExtResource("1_ljr46")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="StaticBody2D"]
+root_node = NodePath("")
+libraries = {
+"": SubResource("AnimationLibrary_frvxv")
+}
