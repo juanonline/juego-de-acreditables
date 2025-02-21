@@ -1,16 +1,122 @@
-[gd_scene load_steps=5 format=3 uid="uid://bw0lpljvspjm5"]
+[gd_scene load_steps=10 format=3 uid="uid://bw0lpljvspjm5"]
 
-[ext_resource type="Texture2D" uid="uid://doq77pwyn8hyv" path="res://Orc.png" id="1_ljr46"]
+[ext_resource type="Texture2D" uid="uid://doq77pwyn8hyv" path="res://Orco/Orc.png" id="1_mqp5d"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3mhud"]
 
-[sub_resource type="Animation" id="Animation_o6tbw"]
-resource_name = "Idle"
+[sub_resource type="Animation" id="Animation_p3j2c"]
+resource_name = "Orc_Idle"
+length = 0.75
+loop_mode = 1
 step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StaticBody2D/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_frvxv"]
+[sub_resource type="Animation" id="Animation_iowaw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StaticBody2D/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_maddy"]
+resource_name = "Orc_Walk"
+length = 0.75
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StaticBody2D/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.111919, 0.211919, 0.311919, 0.411919, 0.511919, 0.611919, 0.711919),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [8, 9, 10, 11, 12, 13, 15, 16]
+}
+
+[sub_resource type="Animation" id="Animation_p44ns"]
+resource_name = "Orc_Attack"
+length = 0.6
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StaticBody2D/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [17, 18, 19, 20, 21]
+}
+
+[sub_resource type="Animation" id="Animation_anorx"]
+resource_name = "Orc_Hurt"
+length = 0.5
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StaticBody2D/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [32, 33, 34, 35]
+}
+
+[sub_resource type="Animation" id="Animation_c6b0t"]
+resource_name = "Orc_Death"
+length = 0.7
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StaticBody2D/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [40, 41, 42, 43]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n5rhv"]
 _data = {
-"Idle": SubResource("Animation_o6tbw")
+"Orc_Attack": SubResource("Animation_p44ns"),
+"Orc_Death": SubResource("Animation_c6b0t"),
+"Orc_Hurt": SubResource("Animation_anorx"),
+"Orc_Idle": SubResource("Animation_p3j2c"),
+"Orc_Walk": SubResource("Animation_maddy"),
+"RESET": SubResource("Animation_iowaw")
 }
 
 [node name="Enemigo2D" type="Node2D"]
@@ -21,11 +127,12 @@ _data = {
 shape = SubResource("CapsuleShape2D_3mhud")
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
-position = Vector2(349, 249)
-texture = ExtResource("1_ljr46")
+texture = ExtResource("1_mqp5d")
+hframes = 8
+vframes = 6
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="StaticBody2D"]
-root_node = NodePath("")
+root_node = NodePath("../..")
 libraries = {
-"": SubResource("AnimationLibrary_frvxv")
+"": SubResource("AnimationLibrary_n5rhv")
 }
