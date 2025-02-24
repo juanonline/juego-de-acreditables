@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cimene5qurawh"]
 
-[ext_resource type="Texture2D" uid="uid://cu0pu54bp7x5h" path="res://Soldier.png" id="1_qhdew"]
+[ext_resource type="Texture2D" uid="uid://dgirq6y544wev" path="res://escenas/Soldier.png" id="1_qhdew"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_85jn7"]
 
